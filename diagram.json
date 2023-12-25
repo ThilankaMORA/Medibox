@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "author": "Thilanka Wickrama",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": -10.04, "left": 25.49, "attrs": {} },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": -101.87,
+      "left": -244.13,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -140.67,
+      "left": 166.2,
+      "attrs": { "volume": "0.1" }
+    },
+    { "type": "wokwi-servo", "id": "servo1", "top": 20.23, "left": -213.26, "attrs": {} },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -156.5,
+      "left": -20.07,
+      "attrs": { "humidity": "22", "temperature": "41.3" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "bz1:2", "esp:GND.1", "green", [ "v0" ] ],
+    [ "bz1:1", "esp:D15", "green", [ "v0" ] ],
+    [ "dht1:SDA", "esp:D2", "green", [ "v16.86", "h147.59", "v26.69" ] ],
+    [ "esp:VN", "ldr1:AO", "green", [ "h0" ] ],
+    [ "esp:D13", "servo1:PWM", "green", [ "h0" ] ]
+  ],
+  "dependencies": {}
+}
